@@ -1,6 +1,6 @@
 .card {
   width: 90%;
-  margin: auto;
+  margin: 1rem auto;
   background-color: #575d67;
   color: white;
 }
@@ -9,6 +9,6 @@ mat-card-subtitle {
   color: white;
 }
 
-ima {
+img {
   height: 20rem;
 }
