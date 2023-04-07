@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
 import { Credenciais } from "src/app/models/credenciais";
 
 @Component({
@@ -12,7 +13,18 @@ export class LoginComponent implements OnInit {
     senha: "",
   };
 
+  email = new FormControl(null, Validators.email);
+  senha = new FormControl(null, Validators.minLength(3));
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  validaCampos(): boolean {
+    if (this.email.valid && this.senha.valid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
