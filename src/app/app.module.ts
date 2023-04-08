@@ -26,14 +26,22 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
-import { NavComponent } from './components/nav/nav.component';
-import { HomeComponent } from './components/home/home.component';
-import { HeaderComponent } from './components/header/header.component';
-import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
-import { LoginComponent } from './components/login/login.component';
+import { NavComponent } from "./components/nav/nav.component";
+import { HomeComponent } from "./components/home/home.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { TecnicoListComponent } from "./components/tecnico/tecnico-list/tecnico-list.component";
+import { LoginComponent } from "./components/login/login.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, HeaderComponent, TecnicoListComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    HeaderComponent,
+    TecnicoListComponent,
+    LoginComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -62,6 +70,7 @@ import { LoginComponent } from './components/login/login.component';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
