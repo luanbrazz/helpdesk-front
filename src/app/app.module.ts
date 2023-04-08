@@ -32,6 +32,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { TecnicoListComponent } from "./components/tecnico/tecnico-list/tecnico-list.component";
 import { LoginComponent } from "./components/login/login.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -72,7 +73,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatCardModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
