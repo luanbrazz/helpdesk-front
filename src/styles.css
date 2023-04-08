@@ -41,3 +41,10 @@ body {
   max-width: 500px; /* largura máxima do popup */
   min-height: 60px; /* altura mínima do popup */
 }
+.logout-snackbar {
+  background-color: #7611d4; /* cor de fundo do popup */
+  color: #ffffff; /* cor do texto do popup */
+  font-weight: bold; /* estilo do texto do popup */
+  max-width: 500px; /* largura máxima do popup */
+  min-height: 60px; /* altura mínima do popup */
+}
