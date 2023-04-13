@@ -35,6 +35,7 @@
         [formControl]="cpf"
         required
         matInput
+        maxlength="11"
         placeholder="ex.: xxx.xxx.xxx-xx"
         (blur)="cpf.setValue(maskCpf(cpf.value))"
       />
