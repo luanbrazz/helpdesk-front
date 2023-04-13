@@ -13,32 +13,49 @@
     />
 
     <section class="section">
-      <mat-checkbox class="margin">Administrador</mat-checkbox>
-      <mat-checkbox class="margin">Clientes</mat-checkbox>
-      <mat-checkbox class="margin">Técnico</mat-checkbox>
+      <mat-checkbox class="margin" color="primary">Administrador</mat-checkbox>
+      <mat-checkbox class="margin" color="primary">Clientes</mat-checkbox>
+      <mat-checkbox class="margin" color="primary">Técnico</mat-checkbox>
     </section>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="ex.: João da Silva" />
+      <input
+        [formControl]="nome"
+        required
+        matInput
+        placeholder="ex.: João da Silva"
+      />
       <mat-icon matSuffix>account_circle</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>CPF</mat-label>
-      <input matInput placeholder="ex.: xxx.xxx.xxx-xx" />
+      <input
+        [formControl]="cpf"
+        required
+        matInput
+        placeholder="ex.: xxx.xxx.xxx-xx"
+      />
       <mat-icon matSuffix>credit_card</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>E-mail</mat-label>
-      <input matInput placeholder="ex.: joao@email.com" />
+      <input
+        [formControl]="email"
+        required
+        matInput
+        placeholder="ex.: joao@email.com"
+      />
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>Senha</mat-label>
       <input
+        [formControl]="senha"
+        required
         type="password"
         matInput
         placeholder="ex.: 1234"
@@ -55,10 +72,20 @@
       </button>
     </mat-form-field>
 
-    <button class="fullwidth mat-elevation-z10" mat-flat-button color="primary">
+    <button
+      [disabled]="!validaCampos()"
+      class="fullwidth mat-elevation-z10"
+      mat-flat-button
+      color="primary"
+    >
       Cadastrar
     </button>
-    <button class="fullwidth mat-elevation-z10" mat-flat-button color="warn">
+    <button
+      routerLink="../"
+      class="fullwidth mat-elevation-z10"
+      mat-flat-button
+      color="warn"
+    >
       Cancelar
     </button>
   </form>

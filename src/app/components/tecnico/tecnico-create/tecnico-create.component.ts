@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-tecnico-create",
@@ -9,11 +10,22 @@ export class TecnicoCreateComponent implements OnInit {
   @ViewChild("passwordInput") passwordInput: any;
   hide = true;
 
+  nome: FormControl = new FormControl(null, Validators.minLength(4));
+  cpf: FormControl = new FormControl(null, Validators.required);
+  email: FormControl = new FormControl(null, Validators.email);
+  senha: FormControl = new FormControl(null, Validators.minLength(4));
+
   currentDate: Date;
   constructor() {}
 
   ngOnInit(): void {
     this.dataHora();
+  }
+
+  validaCampos(): boolean {
+    return (
+      this.nome.valid && this.cpf.valid && this.email.valid && this.senha.valid
+    );
   }
 
   togglePasswordVisibility(): void {
