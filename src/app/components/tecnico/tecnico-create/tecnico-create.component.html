@@ -36,8 +36,12 @@
         required
         matInput
         placeholder="ex.: xxx.xxx.xxx-xx"
+        (blur)="cpf.setValue(maskCpf(cpf.value))"
       />
       <mat-icon matSuffix>credit_card</mat-icon>
+      <mat-error *ngIf="cpf.invalid && cpf.dirty">
+        {{ cpf.hasError("required") ? "Campo obrigatório" : "CPF inválido" }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
