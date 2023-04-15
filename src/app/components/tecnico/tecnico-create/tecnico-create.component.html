@@ -24,6 +24,7 @@
         [formControl]="nome"
         required
         matInput
+        maxlength="50"
         placeholder="ex.: João da Silva"
       />
       <mat-icon matSuffix>account_circle</mat-icon>
@@ -36,6 +37,7 @@
         required
         matInput
         maxlength="14"
+        minlength="14"
         placeholder="ex.: xxx.xxx.xxx-xx"
         appCpfMask
       />
@@ -53,7 +55,7 @@
         matInput
         placeholder="ex.: joao@email.com"
       />
-      <mat-icon matSuffix>credit_card</mat-icon>
+      <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
