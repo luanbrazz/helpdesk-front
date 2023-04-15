@@ -43,14 +43,4 @@ export class TecnicoCreateComponent implements OnInit {
       this.currentDate = new Date();
     }, 1000);
   }
-
-  // Função para formatar CPF
-  maskCpf(value: string): string {
-    let cpf = value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
-    if (cpf.length === 11) {
-      // Verifica se o valor informado é um CPF válido
-      cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"); // Aplica a máscara
-    }
-    return cpf; // Retorna o CPF formatado ou o valor original
-  }
 }
