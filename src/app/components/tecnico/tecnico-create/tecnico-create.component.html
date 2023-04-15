@@ -41,7 +41,15 @@
         placeholder="ex.: xxx.xxx.xxx-xx"
         appCpfMask
       />
-      <mat-icon matSuffix>credit_card</mat-icon>
+      <button
+        mat-icon-button
+        *ngIf="cpf.value"
+        matSuffix
+        (click)="cpf.setValue('')"
+      >
+        <mat-icon *ngIf="cpf.value">close</mat-icon>
+      </button>
+      <mat-icon *ngIf="!cpf.value" matSuffix>credit_card</mat-icon>
       <mat-error *ngIf="cpf.invalid && cpf.dirty">
         {{ cpf.hasError("required") ? "Campo obrigatório" : "CPF inválido" }}
       </mat-error>
