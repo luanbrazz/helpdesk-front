@@ -32,13 +32,12 @@
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>CPF</mat-label>
       <input
-        type="text"
         [formControl]="cpf"
         required
         matInput
+        maxlength="14"
         placeholder="ex.: xxx.xxx.xxx-xx"
-        pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-        title="Digite um CPF válido"
+        appCpfMask
       />
       <mat-icon matSuffix>credit_card</mat-icon>
       <mat-error *ngIf="cpf.invalid && cpf.dirty">
