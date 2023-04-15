@@ -48,3 +48,17 @@ body {
   max-width: 500px; /* largura máxima do popup */
   min-height: 60px; /* altura mínima do popup */
 }
+
+.success-message {
+  background-color: #43a047;
+  color: #fff;
+  max-width: 500px; /* largura máxima do popup */
+  min-height: 60px; /* altura mínima do popup */
+}
+
+.error-message {
+  background-color: #e53935;
+  color: #fff;
+  max-width: 500px; /* largura máxima do popup */
+  min-height: 60px; /* altura mínima do popup */
+}

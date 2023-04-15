@@ -13,14 +13,22 @@
     />
 
     <section class="section">
-      <mat-checkbox class="margin" color="primary">Administrador</mat-checkbox>
-      <mat-checkbox class="margin" color="primary">Clientes</mat-checkbox>
-      <mat-checkbox class="margin" color="primary">Técnico</mat-checkbox>
+      <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary"
+        >Administrador</mat-checkbox
+      >
+      <mat-checkbox (click)="addPerfil(1)" class="margin" color="primary"
+        >Clientes</mat-checkbox
+      >
+      <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary"
+        >Técnico</mat-checkbox
+      >
     </section>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>Nome</mat-label>
       <input
+        [(ngModel)]="tecnico.nome"
+        name="nome"
         [formControl]="nome"
         required
         matInput
@@ -28,11 +36,16 @@
         placeholder="ex.: João da Silva"
       />
       <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-error *ngIf="nome.invalid && nome.dirty">
+        {{ nome.hasError("required") ? "Campo obrigatório" : "Nome inválido" }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>CPF</mat-label>
       <input
+        [(ngModel)]="tecnico.cpf"
+        name="cpf"
         [formControl]="cpf"
         required
         matInput
@@ -58,17 +71,26 @@
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
+        [(ngModel)]="tecnico.email"
+        name="email"
         [formControl]="email"
         required
         matInput
         placeholder="ex.: joao@email.com"
       />
       <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="email.invalid && email.dirty">
+        {{
+          email.hasError("required") ? "Campo obrigatório" : "E-mail inválido"
+        }}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>Senha</mat-label>
       <input
+        [(ngModel)]="tecnico.senha"
+        name="senha"
         [formControl]="senha"
         required
         type="password"
@@ -85,9 +107,15 @@
       >
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
+      <mat-error *ngIf="senha.invalid && senha.dirty">
+        {{
+          senha.hasError("required") ? "Campo obrigatório" : "Senha inválida"
+        }}
+      </mat-error>
     </mat-form-field>
 
     <button
+      (click)="create()"
       [disabled]="!validaCampos()"
       class="fullwidth mat-elevation-z10"
       mat-flat-button
@@ -96,7 +124,7 @@
       Cadastrar
     </button>
     <button
-      routerLink="../"
+      routerLink="/tecnicos"
       class="fullwidth mat-elevation-z10"
       mat-flat-button
       color="warn"
