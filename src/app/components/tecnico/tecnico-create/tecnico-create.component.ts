@@ -50,7 +50,7 @@ export class TecnicoCreateComponent implements OnInit {
           horizontalPosition: "end",
           panelClass: ["success-message"],
         });
-        this.router.navigate(["/tecnicos"]);
+        this.router.navigate(["tecnicos"]);
       },
       error: (ex) => {
         console.log(ex);

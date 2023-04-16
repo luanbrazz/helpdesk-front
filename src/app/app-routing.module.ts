@@ -15,9 +15,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: "home", component: HomeComponent },
-      { path: "tecnico", component: TecnicoListComponent },
-      { path: "tecnico/create", component: TecnicoCreateComponent },
-      { path: "tecnico/update/:id", component: TecnicoUpdateComponent },
+      { path: "tecnicos", component: TecnicoListComponent },
+      { path: "tecnicos/create", component: TecnicoCreateComponent },
+      { path: "tecnicos/update/:id", component: TecnicoUpdateComponent },
     ],
   },
   {
