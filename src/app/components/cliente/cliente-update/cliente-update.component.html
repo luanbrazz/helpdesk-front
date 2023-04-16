@@ -1,0 +1,139 @@
+<div class="container mat-elevation-z8">
+  <form class="form">
+    <h1 class="fullwidth">Atualização de Cliente</h1>
+    <mat-card-content>
+      <div style="text-align: end; opacity: 0.4">
+        {{ currentDate | date : "dd/MM/yyyy HH:mm:ss" }}
+      </div>
+    </mat-card-content>
+    <img
+      class="fullwidth"
+      src="./../../../../assets/img/tecnico-create.svg"
+      alt=""
+    />
+
+    <section class="section">
+      <mat-checkbox (click)="addPerfil(0)" class="margin" color="primary"
+        >Administrador</mat-checkbox
+      >
+      <mat-checkbox
+        (click)="addPerfil(1)"
+        [checked]="true"
+        class="margin"
+        color="primary"
+        >Cliente</mat-checkbox
+      >
+      <mat-checkbox (click)="addPerfil(2)" class="margin" color="primary"
+        >Técnico</mat-checkbox
+      >
+    </section>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input
+        [(ngModel)]="cliente.nome"
+        name="nome"
+        [formControl]="nome"
+        required
+        matInput
+        maxlength="50"
+        placeholder="ex.: João da Silva"
+      />
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-error *ngIf="nome.invalid && nome.dirty">
+        {{ nome.hasError("required") ? "Campo obrigatório" : "Nome inválido" }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input
+        [(ngModel)]="cliente.cpf"
+        name="cpf"
+        [formControl]="cpf"
+        required
+        matInput
+        maxlength="14"
+        minlength="14"
+        placeholder="ex.: xxx.xxx.xxx-xx"
+        appCpfMask
+      />
+      <button
+        mat-icon-button
+        *ngIf="cpf.value"
+        matSuffix
+        (click)="cpf.setValue('')"
+      >
+        <mat-icon *ngIf="cpf.value">close</mat-icon>
+      </button>
+      <mat-icon *ngIf="!cpf.value" matSuffix>credit_card</mat-icon>
+      <mat-error *ngIf="cpf.invalid && cpf.dirty">
+        {{ cpf.hasError("required") ? "Campo obrigatório" : "CPF inválido" }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input
+        [(ngModel)]="cliente.email"
+        name="email"
+        [formControl]="email"
+        required
+        matInput
+        placeholder="ex.: joao@email.com"
+      />
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="email.invalid && email.dirty">
+        {{
+          email.hasError("required") ? "Campo obrigatório" : "E-mail inválido"
+        }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input
+        [(ngModel)]="cliente.senha"
+        name="senha"
+        [formControl]="senha"
+        required
+        type="password"
+        matInput
+        placeholder="ex.: 1234"
+        [type]="hide ? 'password' : 'text'"
+        #passwordInput
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility()"
+        aria-label="Toggle password visibility"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="senha.invalid && senha.dirty">
+        {{
+          senha.hasError("required") ? "Campo obrigatório" : "Senha inválida"
+        }}
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      (click)="update()"
+      [disabled]="!validaCampos()"
+      class="fullwidth mat-elevation-z10"
+      mat-flat-button
+      color="primary"
+    >
+      Atualizar
+    </button>
+    <button
+      routerLink="../../"
+      class="fullwidth mat-elevation-z10"
+      mat-flat-button
+      color="warn"
+    >
+      Cancelar
+    </button>
+  </form>
+</div>

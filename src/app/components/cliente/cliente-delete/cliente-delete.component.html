@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z8">
   <form class="form">
-    <h1 class="fullwidth">Deletar Técnico</h1>
+    <h1 class="fullwidth">Deletar Cliente</h1>
     <mat-card-content>
       <div style="text-align: end; opacity: 0.4">
         {{ currentDate | date : "dd/MM/yyyy HH:mm:ss" }}
@@ -8,7 +8,7 @@
     </mat-card-content>
     <img
       class="fullwidth"
-      src="./../../../../assets/img/tecnico-create.svg"
+      src="./../../../../assets/img/cliente-create.svg"
       alt=""
     />
 
@@ -20,14 +20,14 @@
         >Cliente</mat-checkbox
       >
       <mat-checkbox [disabled]="true" class="margin" color="primary"
-        >Técnico</mat-checkbox
+        >Cliente</mat-checkbox
       >
     </section>
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>Nome</mat-label>
       <input
-        [(ngModel)]="tecnico.nome"
+        [(ngModel)]="cliente.nome"
         name="nome"
         [disabled]="true"
         matInput
@@ -37,7 +37,7 @@
 
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>CPF</mat-label>
-      <input [(ngModel)]="tecnico.cpf" name="cpf" [disabled]="true" matInput />
+      <input [(ngModel)]="cliente.cpf" name="cpf" [disabled]="true" matInput />
 
       <mat-icon matSuffix>credit_card</mat-icon>
     </mat-form-field>
@@ -45,7 +45,7 @@
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
-        [(ngModel)]="tecnico.email"
+        [(ngModel)]="cliente.email"
         name="email"
         [disabled]="true"
         matInput
@@ -56,7 +56,7 @@
     <mat-form-field class="fullwidth" appearance="outline">
       <mat-label>Senha</mat-label>
       <input
-        [(ngModel)]="tecnico.senha"
+        [(ngModel)]="cliente.senha"
         name="senha"
         type="password"
         [disabled]="true"
