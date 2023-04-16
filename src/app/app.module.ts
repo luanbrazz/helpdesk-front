@@ -35,6 +35,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
 import { TecnicoCreateComponent } from "./components/tecnico/tecnico-create/tecnico-create.component";
 import { CpfMaskDirective } from './components/tecnico/tecnico-create/cpf-mask.directive';
+import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { CpfMaskDirective } from './components/tecnico/tecnico-create/cpf-mask.d
     LoginComponent,
     TecnicoCreateComponent,
     CpfMaskDirective,
+    TecnicoUpdateComponent,
   ],
   imports: [
     BrowserModule,
