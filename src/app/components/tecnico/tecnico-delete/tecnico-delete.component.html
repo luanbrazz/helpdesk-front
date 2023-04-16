@@ -1,1 +1,91 @@
-<p>tecnico-delete works!</p>
+<div class="container mat-elevation-z8">
+  <form class="form">
+    <h1 class="fullwidth">Deletar Técnico</h1>
+    <mat-card-content>
+      <div style="text-align: end; opacity: 0.4">
+        {{ currentDate | date : "dd/MM/yyyy HH:mm:ss" }}
+      </div>
+    </mat-card-content>
+    <img
+      class="fullwidth"
+      src="./../../../../assets/img/tecnico-create.svg"
+      alt=""
+    />
+
+    <section class="section">
+      <mat-checkbox [disabled]="true" class="margin" color="primary"
+        >Administrador</mat-checkbox
+      >
+      <mat-checkbox [disabled]="true" class="margin" color="primary"
+        >Cliente</mat-checkbox
+      >
+      <mat-checkbox [disabled]="true" class="margin" color="primary"
+        >Técnico</mat-checkbox
+      >
+    </section>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input
+        [(ngModel)]="tecnico.nome"
+        name="nome"
+        [disabled]="true"
+        matInput
+      />
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input [(ngModel)]="tecnico.cpf" name="cpf" [disabled]="true" matInput />
+
+      <mat-icon matSuffix>credit_card</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input
+        [(ngModel)]="tecnico.email"
+        name="email"
+        [disabled]="true"
+        matInput
+      />
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="fullwidth" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input
+        [(ngModel)]="tecnico.senha"
+        name="senha"
+        [disabled]="true"
+        matInput
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility()"
+        aria-label="Toggle password visibility"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button
+      (click)="delete()"
+      class="fullwidth mat-elevation-z10"
+      mat-flat-button
+      color="primary"
+    >
+      Deletar
+    </button>
+    <button
+      routerLink="../../"
+      class="fullwidth mat-elevation-z10"
+      mat-flat-button
+      color="warn"
+    >
+      Cancelar
+    </button>
+  </form>
+</div>
