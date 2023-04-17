@@ -11,6 +11,7 @@ import { ChamadoService } from "src/app/services/chamado.service";
 })
 export class ChamadoListComponent implements OnInit {
   ELEMENT_DATA: Chamado[] = [];
+  FILTERED_DATA: Chamado[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -64,5 +65,17 @@ export class ChamadoListComponent implements OnInit {
     } else {
       return "ALTA";
     }
+  }
+
+  ordenarPeloStatus(status: any) {
+    let list: Chamado[] = [];
+    this.ELEMENT_DATA.forEach((element) => {
+      if (element.status == status) {
+        list.push(element);
+      }
+      this.FILTERED_DATA = list;
+      this.dataSource = new MatTableDataSource<Chamado>(list);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 }

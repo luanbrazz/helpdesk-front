@@ -16,9 +16,15 @@
   </mat-form-field>
 
   <mat-radio-group color="primary">
-    <mat-radio-button>ABERTO</mat-radio-button>
-    <mat-radio-button>ANDAMENTO</mat-radio-button>
-    <mat-radio-button>ENCERRADO</mat-radio-button>
+    <mat-radio-button (click)="ordenarPeloStatus(0)" value="0">
+      ABERTO</mat-radio-button
+    >
+    <mat-radio-button (click)="ordenarPeloStatus(1)" value="1">
+      ANDAMENTO</mat-radio-button
+    >
+    <mat-radio-button (click)="ordenarPeloStatus(2)" value="2"
+      >ENCERRADO</mat-radio-button
+    >
   </mat-radio-group>
 
   <div class="mat-elevation-z8">
