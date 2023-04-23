@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Chamado } from "src/app/models/chamado";
 import { Cliente } from "src/app/models/cliente";
 import { Tecnico } from "src/app/models/tecnico";
@@ -45,19 +45,51 @@ export class ChamadoUpdateComponent implements OnInit {
     private tecnicoService: TecnicoService,
     private chamadoService: ChamadoService,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.chamado.id = this.route.snapshot.paramMap.get("id");
+    this.findById();
     this.dataHora();
     this.findAllClientes();
     this.findAllTecnicos();
   }
 
-  create() {
-    this.chamadoService.create(this.chamado).subscribe({
+  findById() {
+    this.chamadoService.findById(this.chamado.id).subscribe({
+      next: (resp) => {
+        this.chamado = resp;
+      },
+      error: (ex) => {
+        console.log(ex);
+
+        if (ex.error.errors) {
+          ex.error.errors.forEach((element) => {
+            this.snackBar.open(element.message, "Fechar", {
+              duration: 4000,
+              verticalPosition: "top",
+              horizontalPosition: "end",
+              panelClass: ["error-message"],
+            });
+          });
+        } else {
+          this.snackBar.open(ex.error.message, "Fechar", {
+            duration: 4000,
+            verticalPosition: "top",
+            horizontalPosition: "end",
+            panelClass: ["error-message"],
+          });
+        }
+      },
+    });
+  }
+
+  update() {
+    this.chamadoService.update(this.chamado).subscribe({
       next: (resposta) => {
-        this.snackBar.open("Chamado cadastrado com sucesso!", "Fechar", {
+        this.snackBar.open("Chamado atualizado com sucesso!", "Fechar", {
           duration: 4000,
           verticalPosition: "top",
           horizontalPosition: "end",
@@ -118,5 +150,25 @@ export class ChamadoUpdateComponent implements OnInit {
     setInterval(() => {
       this.currentDate = new Date();
     }, 1000);
+  }
+
+  retornaPrioridade(prioridade: any): string {
+    if (prioridade == "0") {
+      return "BAIXA";
+    } else if (prioridade == "1") {
+      return "MÉDIA";
+    } else {
+      return "ALTA";
+    }
+  }
+
+  retornaStatus(status: any): string {
+    if (status == "0") {
+      return "ABERTO";
+    } else if (status == "1") {
+      return "EM ANDAMENTO";
+    } else {
+      return "ENCERRADO";
+    }
   }
 }
