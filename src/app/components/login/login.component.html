@@ -4,7 +4,7 @@
 
     <img src="./../../../assets/img/login-image.svg" alt="img login" />
 
-    <mat-form-field class="full-width" appearance="fill">
+    <mat-form-field class="full-width" appearance="outline">
       <mat-label>E-mail</mat-label>
       <input
         [formControl]="email"
@@ -14,9 +14,10 @@
         matInput
         placeholder="user@email.com"
       />
+      <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="full-width" appearance="fill">
+    <mat-form-field class="full-width" appearance="outline">
       <mat-label>Senha</mat-label>
       <input
         [formControl]="senha"
@@ -26,7 +27,17 @@
         type="password"
         matInput
         placeholder="Ex. 1234"
+        [type]="hide ? 'password' : 'text'"
+        #passwordInput
       />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility()"
+        aria-label="Toggle password visibility"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
     </mat-form-field>
 
     <button

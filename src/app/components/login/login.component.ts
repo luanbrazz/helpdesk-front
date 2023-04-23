@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -12,6 +12,10 @@ import { AuthService } from "src/app/services/auth.service";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
+  hide = true;
+
+  @ViewChild("passwordInput") passwordInput: any;
+
   creds: Credenciais = {
     email: "",
     senha: "",
@@ -59,6 +63,16 @@ export class LoginComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+
+  togglePasswordVisibility(): void {
+    this.hide = !this.hide;
+    if (!this.hide) {
+      setTimeout(() => {
+        this.hide = true;
+        this.passwordInput.nativeElement.type = "password";
+      }, 2000);
     }
   }
 }
